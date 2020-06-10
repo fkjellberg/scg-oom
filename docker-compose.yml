@@ -1,0 +1,25 @@
+version: "2.4"
+services:
+  scg-oom-app:
+    image: scg-oom-app:latest
+    container_name: scg-oom-app
+    restart: always
+    cpus: 1
+    mem_limit: 1024m
+    ports:
+      - 8080:8080
+    networks:
+      - scg-oom
+    environment:
+      - JAVA_OPTS=
+
+  scg-oom-httpd:
+    image: scg-oom-httpd:latest
+    container_name: scg-oom-httpd
+    ports:
+      - 8081:80
+    networks:
+      - scg-oom
+
+networks:
+  scg-oom:
